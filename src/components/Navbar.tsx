@@ -1,32 +1,35 @@
 import React from 'react';
 import MaxWidthWrapper from './MaxWidthWrapper';
 import { FaShoppingCart } from 'react-icons/fa';
+import useCartStore from '../store/useCartStore';
+import { Link } from 'react-router-dom';
 
 
 interface INavbarProps {
 }
 
 const Navbar: React.FunctionComponent<INavbarProps> = () => {
+    const { carts } = useCartStore();
     const navItems = [
         {
             id: 1,
             name: 'Home',
-            href: '#',
+            href: '/',
         },
         {
             id: 2,
             name: 'Shop',
-            href: '#',
+            href: '/',
         },
         {
             id: 3,
             name: 'About',
-            href: '#',
+            href: '/',
         },
         {
             id: 4,
             name: 'Contact',
-            href: '#',
+            href: '/',
         },
     ];
     return (
@@ -50,13 +53,15 @@ const Navbar: React.FunctionComponent<INavbarProps> = () => {
                             ))}
                         </div>}
                     {/* Cart Icon */}
-                    <div className="space">
-                        <button className="relative">
-                            <FaShoppingCart className='text-2xl' />
-                            <span className="absolute -top-3 -right-3 bg-primary text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
-                                0
-                            </span>
-                        </button>
+                    <div className=" space-x-4">
+                        <Link to={'/cart'}>
+                            <button className=" relative">
+                                <FaShoppingCart className=" text-2xl" />
+                                <span className=" absolute -top-3 -right-3 bg-primary text-white text-xs rounded-full w-5 h-5 flex justify-center items-center">
+                                    {carts.length}
+                                </span>
+                            </button>
+                        </Link>
                     </div>
                 </nav>
             </MaxWidthWrapper>

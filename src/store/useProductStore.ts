@@ -8,7 +8,7 @@ interface ProductState {
     loading: boolean,
     error: string | null,
     fetchProducts: () => Promise<void>,
-    fetchProduct: (id: number) => Promise<void>
+    fetchProduct: (id: string | undefined) => Promise<void>
 }
 
 
@@ -27,7 +27,7 @@ const useProductStore = create<ProductState>((set) => ({
             set({ error: "Failed to fetch products", loading: false });
         }
     },
-    fetchProduct: async (id: number) => {
+    fetchProduct: async (id) => {
         set({ loading: true, error: null });
         try {
             const response = await axios.get<Product>(`https://fakestoreapi.com/products/${id}`);

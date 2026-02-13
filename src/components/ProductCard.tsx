@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ReviewStars from './ReviewStars';
 import type { Product } from '../types/products';
+import useCartStore from '../store/useCartStore';
 
 
 interface IProductCardProps {
@@ -9,6 +10,7 @@ interface IProductCardProps {
 }
 
 const ProductCard: React.FunctionComponent<IProductCardProps> = ({ product }) => {
+    const { addToCart } = useCartStore();
     return (
         <div className=" flex w-full flex-col overflow-hidden rounded-lg border border-primary/30 shadow-primary shadow-sm">
             <Link to={`product/${product.id}`}>
@@ -29,7 +31,7 @@ const ProductCard: React.FunctionComponent<IProductCardProps> = ({ product }) =>
                     <p className=" text-2xl font-bold"> ${product.price} </p>
                     <ReviewStars rating={product.rating.rate} />
                 </div>
-                <button className=" rounded-full bg-primary  hover:bg-primary/90 px-5 py-3 text-center text-white">
+                <button onClick={() => addToCart(product)} className=" rounded-full bg-primary  hover:bg-primary/90 px-5 py-3 text-center text-white">
                     Add To Cart
                 </button>
             </div>
