@@ -1,1 +1,7 @@
-# shopping-cart
+# Online Shop
+
+- React
+- Typescript
+- Zustand
+- TailwindCSS
+
