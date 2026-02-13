@@ -1,13 +1,13 @@
-import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import { Outlet } from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <main className="flex min-h-screen flex-col text-gray-300 bg-secondary font-montserrat">
+    <main className=' flex flex-col min-h-screen bg-secondary font-montserrat text-gray-300'>
       <Navbar />
+      <Outlet />
       <Footer />
     </main>
   )

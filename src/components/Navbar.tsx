@@ -1,5 +1,6 @@
 import React from 'react';
 import MaxWidthWrapper from './MaxWidthWrapper';
+import { FaShoppingCart } from 'react-icons/fa';
 
 
 interface INavbarProps {
@@ -48,6 +49,15 @@ const Navbar: React.FunctionComponent<INavbarProps> = () => {
                                 </a>
                             ))}
                         </div>}
+                    {/* Cart Icon */}
+                    <div className="space">
+                        <button className="relative">
+                            <FaShoppingCart className='text-2xl' />
+                            <span className="absolute -top-3 -right-3 bg-primary text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                                0
+                            </span>
+                        </button>
+                    </div>
                 </nav>
             </MaxWidthWrapper>
         </div>
